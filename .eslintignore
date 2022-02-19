@@ -1,0 +1,6 @@
+.vs
+.vscode
+coverage
+dist
+global
+node_modules
