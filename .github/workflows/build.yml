@@ -33,4 +33,4 @@ jobs:
       uses: kitabisa/sonarqube-action@v1.1.0
       with:
         host: ${{ secrets.SONAR_HOST_URL }}
-        login: ${{ secrets.SONAR_TOKE }}
+        login: ${{ secrets.SONAR_TOKEN }}
