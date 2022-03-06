@@ -14,5 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # TODO: Tear down same as preview sets up
     - name: Tear down preview 
-      run: echo "Tear down blaha-${{ github.event.number }}"
+      run: |
+          echo "DepTear down preview for ${{ github.event.ref }}"

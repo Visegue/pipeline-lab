@@ -9,12 +9,15 @@ on:
       - main
 
 jobs:
-  build:
+  preview:
     runs-on: ubuntu-latest
 
     steps:
+    # TODO: Can we make dependent on the Build workflow, or do we need to build in here?
     - name: Deploy preview 
-      run: echo "Deploy blaha-${{ github.event.number }}"
+      run: |
+          echo "Deploy preview for branch ${{ github.event.ref }}"
 
     - name: Verify preview 
-      run: Running automatic tests against preview
+      run: |
+          echo "Automatic verification for preview"

@@ -34,3 +34,7 @@ jobs:
 #      with:
 #        host: ${{ secrets.SONAR_HOST_URL }}
 #        login: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Build deployable
+      run: |
+          echo "Build deployable for branch ${{ github.event.ref }}"
