@@ -15,3 +15,6 @@ jobs:
     steps:
     - name: Deploy preview 
       run: echo "Deploy blaha-${{ github.event.number }}"
+
+    - name: Verify preview 
+      run: Running automatic tests against preview
