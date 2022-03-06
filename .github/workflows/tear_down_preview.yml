@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Tear down preview
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches-ignore: # Main branches deploy to staging
+      - master
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Tear down preview 
+      run: echo "Tear down blaha-${{ github.event.number }}"
