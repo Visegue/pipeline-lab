@@ -31,6 +31,6 @@ jobs:
         branch: main
         title: Ready for release
         body: This release candidate is ready to be released, merge to start release process
-        reviewers: alefri
+        reviewers: alefr
 
 
