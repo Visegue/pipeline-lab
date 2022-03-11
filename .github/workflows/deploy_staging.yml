@@ -7,7 +7,7 @@ on:
     # Note: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
     # If not working well with prereleased/release types, used publish and check event instead
     # Prereleases created from drafts don't trigger prerelease, but publish will. But not
-    # currently using that workflow
+    # currently using that workflow 
     types: [prereleased]  
     
 jobs:
