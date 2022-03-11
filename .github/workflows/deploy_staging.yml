@@ -21,7 +21,7 @@ jobs:
     - name: Deploy to staging
       run: echo "Deploying ${{ GITHUB_REF_NAME }} to staging"
     
-    - uses: Automatic verification of staging
+    - name: Automatic verification of staging
       run: echo "Verified"
     
     - name: Create Pull Request
