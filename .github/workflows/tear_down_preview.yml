@@ -17,4 +17,4 @@ jobs:
     # TODO: Tear down same as preview sets up
     - name: Tear down preview 
       run: |
-          echo "DepTear down preview for ${{ github.event.ref }}"
+          echo "Tear down preview for ${{ github.event.ref }}"
