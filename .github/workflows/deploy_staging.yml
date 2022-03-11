@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Deploy staging
+
+on:
+  release:
+    # Note: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
+    # If not working well with prereleased/release types, used publish and check event instead
+    # Prereleases created from drafts don't trigger prerelease, but publish will. But not
+    # currently using that workflow
+    types: [prereleased]  
+    
+jobs:
+  deploy:
+    if: "!github.event.release.prerelease"
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Deploy to staging
+      run: echo "Deploying ${{ GITHUB_REF_NAME }} to staging"
+    
+    - uses: Automatic verification of staging
+      run: echo "Verified"
+    
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: "chore: merge ${{ GITHUB_REF_NAME }} to main"
+        branch: main
+        title: Ready for release
+        body: This release candidate is ready to be released, merge to start release process
+        reviewers: alefri
+
+
