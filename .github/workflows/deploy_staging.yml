@@ -20,15 +20,19 @@ jobs:
 
     - name: Print github
       run: |
-        echo "github: ${{ github }}"
+        echo "github: ${{ toJSON(github) }}"
+
+    - name: Print github ref
+      run: |
+        echo "ref: ${{ toJSON(github.ref) }}"
     
     - name: Print github event
       run: |
-        echo "event: ${{ github.event }}"
+        echo "event: ${{ toJSON(github.event) }}"
 
     - name: Print github event release
       run: |
-        echo "release: ${{ github.event.release }}"
+        echo "release: ${{ toJSON(github.event.release) }}"
 
     - name: Deploy to staging
       run: |
