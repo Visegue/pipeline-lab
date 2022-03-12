@@ -1,3 +1,10 @@
+# [1.0.0-rc.5](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.4...v1.0.0-rc.5) (2022-03-12)
+
+
+### Bug Fixes
+
+* debug commit ([1f73a8f](https://github.com/Visegue/pipeline-lab/commit/1f73a8fcaae61dfdea40e1de0f4ce7669cc3888b))
+
 # [1.0.0-rc.4](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2022-03-12)
 
 
