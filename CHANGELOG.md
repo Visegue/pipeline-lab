@@ -1,3 +1,10 @@
+# [1.0.0-rc.6](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.5...v1.0.0-rc.6) (2022-03-12)
+
+
+### Bug Fixes
+
+* print debug values as json ([7260806](https://github.com/Visegue/pipeline-lab/commit/7260806d3f599ae8b666ba187ed00b280d3815fb))
+
 # [1.0.0-rc.5](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.4...v1.0.0-rc.5) (2022-03-12)
 
 
