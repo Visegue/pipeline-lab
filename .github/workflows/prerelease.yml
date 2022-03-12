@@ -8,7 +8,7 @@ on:
       - "rc"
     
 jobs:
-  preview:
+  prerelease:
     runs-on: ubuntu-latest
 
     steps:
