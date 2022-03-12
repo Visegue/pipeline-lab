@@ -1,3 +1,10 @@
+# [1.0.0-rc.8](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.7...v1.0.0-rc.8) (2022-03-12)
+
+
+### Bug Fixes
+
+* used a new release token ([adf58fd](https://github.com/Visegue/pipeline-lab/commit/adf58fda972bd18e52f3180e695fb6e6f38adc07))
+
 # [1.0.0-rc.7](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.6...v1.0.0-rc.7) (2022-03-12)
 
 
