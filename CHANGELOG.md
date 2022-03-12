@@ -1,3 +1,10 @@
+# [1.0.0-rc.7](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.6...v1.0.0-rc.7) (2022-03-12)
+
+
+### Bug Fixes
+
+* hopefully working automatic pr to main ([77feeec](https://github.com/Visegue/pipeline-lab/commit/77feeecba6e50e12083779bd3277997b464b484d))
+
 # [1.0.0-rc.6](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.5...v1.0.0-rc.6) (2022-03-12)
 
 
