@@ -1,3 +1,10 @@
+# [1.0.0-rc.4](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2022-03-12)
+
+
+### Bug Fixes
+
+* proper prerelease ([c7f24c4](https://github.com/Visegue/pipeline-lab/commit/c7f24c441203887d48fea1c508d52415ca9773b4))
+
 # [1.0.0-rc.3](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.2...v1.0.0-rc.3) (2022-03-11)
 
 
