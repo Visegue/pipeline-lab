@@ -1,3 +1,10 @@
+# [1.0.0-rc.9](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.8...v1.0.0-rc.9) (2022-03-14)
+
+
+### Bug Fixes
+
+* changed how github token is read ([5606c33](https://github.com/Visegue/pipeline-lab/commit/5606c33ad1183d2578390b0b49352bdd6768023f))
+
 # [1.0.0-rc.8](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.7...v1.0.0-rc.8) (2022-03-12)
 
 
