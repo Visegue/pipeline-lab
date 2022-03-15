@@ -1,3 +1,10 @@
+# [1.0.0-rc.14](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.13...v1.0.0-rc.14) (2022-03-15)
+
+
+### Bug Fixes
+
+* testar utan PAT ([e7b4580](https://github.com/Visegue/pipeline-lab/commit/e7b4580f557469ea6519563bcb6198b9c9002f65))
+
 # [1.0.0-rc.13](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.12...v1.0.0-rc.13) (2022-03-15)
 
 
