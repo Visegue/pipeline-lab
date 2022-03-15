@@ -1,3 +1,10 @@
+# [1.0.0-rc.13](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.12...v1.0.0-rc.13) (2022-03-15)
+
+
+### Bug Fixes
+
+* hopefully final fix ([db1440e](https://github.com/Visegue/pipeline-lab/commit/db1440e86b794351e50b435778cb291bf3fafb8a))
+
 # [1.0.0-rc.12](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.11...v1.0.0-rc.12) (2022-03-15)
 
 
