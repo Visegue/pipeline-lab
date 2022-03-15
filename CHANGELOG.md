@@ -1,3 +1,11 @@
+# [1.0.0-rc.10](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.9...v1.0.0-rc.10) (2022-03-15)
+
+
+### Bug Fixes
+
+* proper PR branches¨ ([facd49c](https://github.com/Visegue/pipeline-lab/commit/facd49c3d202f053a97a6c50d10e22a266a9ed4f))
+* set to PAT for automatic PR ([928a94f](https://github.com/Visegue/pipeline-lab/commit/928a94f7c74fc9aeb6ed17631df09e3990ab2fde))
+
 # [1.0.0-rc.9](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.8...v1.0.0-rc.9) (2022-03-14)
 
 
