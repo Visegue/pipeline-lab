@@ -1,3 +1,10 @@
+# [1.0.0-rc.15](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.14...v1.0.0-rc.15) (2022-03-15)
+
+
+### Bug Fixes
+
+* set back token ([46252fd](https://github.com/Visegue/pipeline-lab/commit/46252fd481dfedd4f2700487f4d3d4f5b54bf131))
+
 # [1.0.0-rc.14](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.13...v1.0.0-rc.14) (2022-03-15)
 
 
