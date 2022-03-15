@@ -1,3 +1,10 @@
+# [1.0.0-rc.11](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.10...v1.0.0-rc.11) (2022-03-15)
+
+
+### Bug Fixes
+
+* change GA PR action ([c7b0eab](https://github.com/Visegue/pipeline-lab/commit/c7b0eab6eab421b757948fa59fcdb86427235e69))
+
 # [1.0.0-rc.10](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.9...v1.0.0-rc.10) (2022-03-15)
 
 
