@@ -1,3 +1,11 @@
+# [1.0.0-rc.12](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.11...v1.0.0-rc.12) (2022-03-15)
+
+
+### Bug Fixes
+
+* changed the source branch ([21a9a7b](https://github.com/Visegue/pipeline-lab/commit/21a9a7be4aff9e1c03ea87981e00c02ccbe87b9b))
+* persist credentials ([eb8941b](https://github.com/Visegue/pipeline-lab/commit/eb8941bfd7203fb50a0528de7bc7b73d2c6b8eef))
+
 # [1.0.0-rc.11](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.10...v1.0.0-rc.11) (2022-03-15)
 
 
