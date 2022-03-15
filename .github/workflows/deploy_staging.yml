@@ -41,4 +41,3 @@ jobs:
         pr_reviewer: ${{ github.actor }}
         pr_allow_empty: true                              # Creates pull request even if there are no changes
         github_token: ${{ secrets.RELEASE_GH_TOKEN }}
-    
