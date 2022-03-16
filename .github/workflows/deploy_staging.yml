@@ -37,7 +37,7 @@ jobs:
         source_branch: ${{ github.event.release.target_commitish }}
         destination_branch: ${{ github.event.repository.default_branch }}                      
         pr_title: "Pulling ${{ github.ref_name }} into ${{ github.event.repository.default_branch }}"
-        pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
+        pr_body: ":crown: *An automated PR*"           
         pr_reviewer: ${{ github.actor }}
-        pr_allow_empty: true                              # Creates pull request even if there are no changes
-        github_token: ${{ secrets.RELEASE_GH_TOKEN }}
+        pr_allow_empty: true                          
+        github_token: ${{ secrets.PUBLIC_RELEASE_GH_TOKEN }}     # Token should not belong to actor, or an reviewer is not set
