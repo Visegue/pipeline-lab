@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pipeline-lab
 
-## Getting Started
+This is a lab project for testing out workflows with github actions.
 
-First, run the development server:
+The aim is to make and keep it generic with regards of no partilar underlying technology.
+This is partially true as it will utilize [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and particularily [semantic-release](https://github.com/semantic-release/semantic-release) to automate the release process.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Outside of that the workflow files for this particular project will be technology agnostic (although it was initally scaffolded for nextjs).
+The idea is to fork the repo to try out different technology stacks.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Workflow
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+The theory behind the workflow currently looks like:
+![Workflow visualization](docs/build.drawio.svg)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The visualization make no distinction of how the different branches should be used.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Initially a nominal workflow was visualized. Illustrating how the different branches was made to be used in conjunction and automate processes between them.
+The idea was to automate the complete release process: <br /> 
+`feature/fix/...` -> `prerelease (staging)`-> `release (prod)`
 
-## Learn More
+Instead the branches are now viusalized completely separate and a user can decide for themself how to work with them. That way it's possible to create a flow working with both `previews`, `prereleases` and/or `releases`.
 
-To learn more about Next.js, take a look at the following resources:
+### Feature branches
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The feature branches are the heart of the development cycle.
+With the current actions all branches are considered `feature` branches.
+When a change is ready it should be merged into any of the other branches, taking the workflow forward.
+When a `PR` is created it should deploy a preview which will (preferably) be automatically verified, manually where automation is not applicable.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+An independently deployed preview is favorable instead of deploying to a dev environment.
+Deployment to a dev environment is usually easier, but if several features are worked on in parallel they might end up overwriting each other, needing syncronization between parallel work.
+Although a `PR` is usually filed when the work is ready to be brought in, it is still W.I.P as long as it's open (and there's communication going on between the participants of the PR).
+It's not always the case that the work done in the PR is ready for `environment` deployment until it's ready for merge.
