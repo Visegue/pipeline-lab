@@ -87,3 +87,38 @@ It's also possible with further automations to reduce developer load (like autom
 
 When a workflow is actually run it is possible to deduce further information about the PR and what triggers the event.
 It would be possible to create a gatekeeper job which first triggers and verifies if a preview is warranted, if so triggering the preview workflow file.
+
+### Release branches
+
+Release branches creates a release, which in turn is deployed to `staging` and verified, after that to `production` and verified.
+
+![Release branches](docs/release_branch.png)
+
+It's possible to pushes to release branches directly, but the nominal flow should at least go through a `feature` branch, merged directly to the `release` branch, or with a `prerelease` in between. Depending on how prereleases are utilized.
+
+It would be possible to work with prerelease on the release branch, which in turn triggers release behavior (basically the same behavior as described in _1. Removing prerelease PR previews with nailed down workflow_, but without the extra prerelease branch).
+If this is wanted depends on what verification is required before actually creating the release.
+The upside is that a staging deployment is always created, with optional verification, **before** a proper release is created and deployed to production.
+The downside is that the workflow always forces a prerelease and can become more bloated and that prerelease commits are always pushed back to the repo (possibly "dirtying" the release history).
+
+Automatic prereleases before actual releases can probably be seen as a wanted effect by many, but it depends on how the team want to work with releases and who the consumer of the release is.
+For small incremental releases, deployed often that, with good verification that rarely fails a prerelease might be unwarranted.
+It might also be the case that automatic testing, reviews and preview environments can work as good enough verification, making prereleases "redundant" and merely bloating the workflow and its components.
+
+This particular workflow is setup not not distinguish.
+It is possible to work with feature branches, PRs and previews.
+Prereleases can be made by mergin to a prerelease branch, with "proper" releases to the release branch.
+
+After a release is made automatic deployments take place to both staging and production.
+Staging is so verification can take place before moving to production, but also so staging always contains the latest release and is up to date.
+
+## Discussions
+
+In this file the workflow and the theory behind it is described.
+In any design there choices to be made and benefits and drawbacks come with each choice.
+
+The aim of the file is to explain the choices made, well enough to provide some reasoning and possibilites to improve the workflow further.
+
+For information, comments or suggestions, feel free to reach out to [@alefr](https://github.com/alefr).
+
+We're always eager to improve our design.
