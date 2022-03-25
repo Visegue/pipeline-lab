@@ -43,6 +43,7 @@ jobs:
     
     - name: Create release using semantic release
       env:
-        GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELASE_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+        GH_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
         HUSKY: 0
       run: npx semantic-release       
