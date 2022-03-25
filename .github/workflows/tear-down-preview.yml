@@ -7,7 +7,7 @@ on:
     types: [ closed ]
 
 env:
-  PR_TAG: "pr-${{ github.event.issue.number }}"
+  PR_TAG: "pr-${{ github.event.pull_request.number }}"
 
 jobs:
   build:

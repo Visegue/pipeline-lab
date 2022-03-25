@@ -4,6 +4,14 @@ name: Release
 
 on:
   push:
+    # Specifying branches is not really needed if the semantic-release configuration is correct.
+    # It should still work to run on all branches.
+    # feature branches shouldn't trigger a release
+    # prerelease branches should trigger a prerelease
+    # release branches should trigger a release
+    # But this check requires the action to run which is redundant for feature branches.
+    # Use this check so semantic-release doesn't need to run unnecessarily.
+    # Gives a cleaner action history and saves on minutes :)
     branches:
       - "rc"
       - "main"
