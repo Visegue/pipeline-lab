@@ -5,11 +5,13 @@ name: Deploy preview
 on:
   pull_request:
 
+env:
+  PR_TAG: "pr-${{ github.event.issue.number }}"
+
 jobs:
   preview:
     runs-on: ubuntu-latest
-    env:
-      PR_TAG: "pr-${{ github.event.issue }}"
+  
     steps:
     - name: Prepare preview
       run: |

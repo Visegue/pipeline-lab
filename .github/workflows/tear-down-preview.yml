@@ -6,6 +6,9 @@ on:
   pull_request:
     types: [ closed ]
 
+env:
+  PR_TAG: "pr-${{ github.event.issue.number }}"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,5 +17,3 @@ jobs:
     - name: Tear down preview 
       run: |
           echo "Tear down preview for ${{ env.PR_TAG}}"
-      env:
-        PR_TAG: "pr-${{ github.event.number }}"
