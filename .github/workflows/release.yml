@@ -4,14 +4,19 @@ name: Release
 
 on:
   workflow_run:
-    workflows: [Build]
-    types: [completed]
+    workflows: 
+    - "Build"
+    types: 
+    - "completed"
     # Could possibly skip branches as an actual release will only be made if its warranted and
     # on the correct branches anyway. But have the branches explicitly to keep the actions
     # sections cleaner (otherwise it would still show a run release action, which won't do anything else
     # but confirm that a release isn't needed).
     # The release workflow could be a job in the build workflow instead, maybe cleaner?
-    branches: [rc, main, master] 
+    branches: 
+    - "rc"
+    - "main"
+    - "master"
     
 jobs:
   release:
