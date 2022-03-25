@@ -1,3 +1,10 @@
+# [1.0.0-rc.16](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.15...v1.0.0-rc.16) (2022-03-25)
+
+
+### Bug Fixes
+
+* new pipelin tokene ([96ed4e6](https://github.com/Visegue/pipeline-lab/commit/96ed4e6335d3c171444e08a30552dd02bbed3056))
+
 # [1.0.0-rc.15](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.14...v1.0.0-rc.15) (2022-03-15)
 
 
