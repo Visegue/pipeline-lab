@@ -1,11 +1,13 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: Create prerelease
+name: Release
 
 on:
   push:
     branches:
       - "rc"
+      - "main"
+      - "master"
     
 jobs:
   prerelease:

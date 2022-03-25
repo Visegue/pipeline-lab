@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Deploy preview
+
+on:
+  pull_request:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      PR_TAG: "pr-${{ github.event.issue }}"
+    steps:
+    - name: Prepare preview
+      run: |
+        echo "Prepare whatever is needed to deploy preview: ${{ env.PR_TAG }}"
+
+    - name: Deploy preview 
+      run: |
+          echo "Deploy preview: ${{ env.PR_TAG }}"
+
+    - name: Verify preview 
+      run: |
+          echo "Automatic verification for preview: ${{ env.PR_TAG }}"
