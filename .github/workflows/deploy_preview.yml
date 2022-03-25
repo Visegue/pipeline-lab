@@ -4,9 +4,6 @@ name: Deploy preview
 
 on:
   pull_request:
-    branches-ignore: # Main branches deploy to staging
-      - master
-      - main
 
 jobs:
   preview:

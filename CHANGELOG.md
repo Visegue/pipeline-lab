@@ -1,3 +1,39 @@
+# [1.0.0-rc.15](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.14...v1.0.0-rc.15) (2022-03-15)
+
+
+### Bug Fixes
+
+* set back token ([46252fd](https://github.com/Visegue/pipeline-lab/commit/46252fd481dfedd4f2700487f4d3d4f5b54bf131))
+
+# [1.0.0-rc.14](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.13...v1.0.0-rc.14) (2022-03-15)
+
+
+### Bug Fixes
+
+* testar utan PAT ([e7b4580](https://github.com/Visegue/pipeline-lab/commit/e7b4580f557469ea6519563bcb6198b9c9002f65))
+
+# [1.0.0-rc.13](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.12...v1.0.0-rc.13) (2022-03-15)
+
+
+### Bug Fixes
+
+* hopefully final fix ([db1440e](https://github.com/Visegue/pipeline-lab/commit/db1440e86b794351e50b435778cb291bf3fafb8a))
+
+# [1.0.0-rc.12](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.11...v1.0.0-rc.12) (2022-03-15)
+
+
+### Bug Fixes
+
+* changed the source branch ([21a9a7b](https://github.com/Visegue/pipeline-lab/commit/21a9a7be4aff9e1c03ea87981e00c02ccbe87b9b))
+* persist credentials ([eb8941b](https://github.com/Visegue/pipeline-lab/commit/eb8941bfd7203fb50a0528de7bc7b73d2c6b8eef))
+
+# [1.0.0-rc.11](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.10...v1.0.0-rc.11) (2022-03-15)
+
+
+### Bug Fixes
+
+* change GA PR action ([c7b0eab](https://github.com/Visegue/pipeline-lab/commit/c7b0eab6eab421b757948fa59fcdb86427235e69))
+
 # [1.0.0-rc.10](https://github.com/Visegue/pipeline-lab/compare/v1.0.0-rc.9...v1.0.0-rc.10) (2022-03-15)
 
 

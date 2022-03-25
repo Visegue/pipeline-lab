@@ -13,26 +13,31 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-
     - uses: actions/checkout@v2
-
     - name: Deploy to staging
       run: |
         echo "Deploying ${{ github.event.release.tag_name }} to staging"
-    
     - name: Automatic verification of staging
       run: |
         echo "Verified"
     
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
+  pull-request:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.RELEASE_GH_TOKEN }}
-        commit-message: "chore: merge to ${{ github.event.repository.default_branch }}"
-        branch: ${{ github.event.repository.default_branch }}
-        title: Ready for release
-        body: This release candidate is ready to be released, merge to start release process
-        reviewers: ${{ github.actor }}
-        base: ${{ github.event.release.target_commitish }}
+        # If we persist credentials at checkokut, the GITHUB_TOKEN later down don't take
+        # see: https://github.com/semantic-release/git/issues/196
+        persist-credentials: false  
+    - name: Create Pull Request
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: ${{ github.event.release.target_commitish }}
+        destination_branch: ${{ github.event.repository.default_branch }}                      
+        pr_title: "Pulling ${{ github.ref_name }} into ${{ github.event.repository.default_branch }}"
+        pr_body: ":crown: *An automated PR*"           
+        pr_reviewer: ${{ github.actor }}
+        pr_allow_empty: true                          
+        github_token: ${{ secrets.PUBLIC_RELEASE_GH_TOKEN }}     # Token should not belong to actor, or an reviewer is not set
