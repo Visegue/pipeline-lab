@@ -2,7 +2,12 @@
 
 name: "🚀 Release"
 
-on: workflow_call
+on: 
+  workflow_call:
+    secrets:
+        release-gh-token:
+          description: 'Github token used when running semantic release'
+          required: true
 
 jobs:
   release:
@@ -34,6 +39,6 @@ jobs:
     - name: Create release using semantic release
       run: npx semantic-release       
       env:
-        GITHUB_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
-        GH_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.release-gh-token }}
+        GH_TOKEN: ${{ secrets.release-gh-token }}
         HUSKY: 0
