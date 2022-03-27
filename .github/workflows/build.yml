@@ -1,37 +1,26 @@
-# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-
-name: Build
+name: '🧬 Build and release'
 
 on:
   push:
 
+# We currently run release on all branches, shouldn't be a problem as
+# Semantic release is configured to have prerelease and release branches
+# in itself.
+# If it's not a prerelease/release branch, nothing should happen.
+# To save up on action minutes and get a cleaner run history it
+# would be possible to specify different files for different branches
+# (build for dev branch, build+release for release branches).
+# But then the action file branches need to be syncronized with the
+# semantic-release configuration.
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  call-lint-and-build:
+    uses: ./.github/workflows/_build.yml
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Lint
-      run: npm run lint
-
-    - name: Build
-      run: npm run build --if-present
-
-    - name: Run tests
-      run: npm run test:ci
-    
-#    - name: SonarQube Scan
-#      uses: kitabisa/sonarqube-action@v1.1.0
-#      with:
-#        host: ${{ secrets.SONAR_HOST_URL }}
-#        login: ${{ secrets.SONAR_TOKEN }}
-
+  call-tests:
+    needs: call-lint-and-build
+    uses: ./.github/workflows/_test.yml
+  
+  call-release:
+    needs: call-tests
+    uses: ./.github/workflows/_release.yml

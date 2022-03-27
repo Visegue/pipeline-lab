@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: "🚀 Release"
+
+on: workflow_call
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # If we persist credentials at checkokut, the GITHUB_TOKEN later down don't take
+        # see: https://github.com/semantic-release/git/issues/196
+        persist-credentials: false  
+    
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'npm'
+    
+    - run: npm ci
+    - run: npm run build
+
+    - name: Create release using semantic release
+      run: npx semantic-release       
+      env:
+        GITHUB_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+        GH_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+        HUSKY: 0
