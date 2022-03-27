@@ -5,16 +5,15 @@ name: Tear down preview
 on:
   pull_request:
     types: [ closed ]
-    branches-ignore: # Main branches deploy to staging
-      - master
-      - main
+
+env:
+  PR_TAG: "pr-${{ github.event.pull_request.number }}"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    # TODO: Tear down same as preview sets up
     - name: Tear down preview 
       run: |
-          echo "Tear down preview for ${{ github.event.ref }}"
+          echo "Tear down preview for ${{ env.PR_TAG}}"

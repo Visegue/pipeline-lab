@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: Deploy staging
+name: Deploy prerelease to staging
 
 on:
   release:
@@ -13,26 +13,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-
     - uses: actions/checkout@v2
-
     - name: Deploy to staging
       run: |
         echo "Deploying ${{ github.event.release.tag_name }} to staging"
-    
     - name: Automatic verification of staging
       run: |
         echo "Verified"
-    
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.RELEASE_GH_TOKEN }}
-        commit-message: "chore: merge to ${{ github.event.repository.default_branch }}"
-        branch: ${{ github.event.repository.default_branch }}
-        title: Ready for release
-        body: This release candidate is ready to be released, merge to start release process
-        reviewers: ${{ github.actor }}
-        base: ${{ github.event.release.target_commitish }}

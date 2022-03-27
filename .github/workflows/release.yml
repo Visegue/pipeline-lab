@@ -1,14 +1,25 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: Create prerelease
+name: Release
 
 on:
-  push:
-    branches:
-      - "rc"
+  workflow_run:
+    workflows: 
+    - "Build"
+    types: 
+    - "completed"
+    # Could possibly skip branches as an actual release will only be made if its warranted and
+    # on the correct branches anyway. But have the branches explicitly to keep the actions
+    # sections cleaner (otherwise it would still show a run release action, which won't do anything else
+    # but confirm that a release isn't needed).
+    # The release workflow could be a job in the build workflow instead, maybe cleaner?
+    branches: 
+    - "rc"
+    - "main"
+    - "master"
     
 jobs:
-  prerelease:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,6 +44,7 @@ jobs:
     
     - name: Create release using semantic release
       env:
-        GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELASE_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+        GH_TOKEN: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
         HUSKY: 0
       run: npx semantic-release       
