@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: Tear down preview
+name: "🗑️ Tear down preview"
 
 on:
   pull_request:
