@@ -1,23 +1,16 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: "📦 Deploy prerelease to staging"
+name: "🚢 Deploy prerelease"
 
 on:
   release:
-    # Note: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
-    # If not working well with prereleased/release types, used publish and check event instead
-    # Prereleases created from drafts don't trigger prerelease, but publish will. But not
-    # currently using that workflow 
-    types: [prereleased]  
+    types: [prereleased]
+
+env:
+  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}/${{ github.event.release.tag_name }}"
     
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy to staging
-      run: |
-        echo "Deploying ${{ github.event.release.tag_name }} to staging"
-    - name: Automatic verification of staging
-      run: |
-        echo "Verified"
+  call-deploy-staging:
+    uses: ./.github/workflows/_deploy-staging.yml
+    with:
+      image: ${{ env.IMAGE }}

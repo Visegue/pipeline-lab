@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: "🚀 Deploy to release"
+
+on:
+  release:
+    types: [released]
+
+env:
+  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}/${{ github.event.release.tag_name }}"
+    
+jobs:
+  call-deploy-staging:
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ env.IMAGE }}
+      environment: staging
+
+  call-deploy-production:
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ env.IMAGE }}
+      environment: production

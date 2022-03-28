@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: "🚀 Deploy to production"
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        required: true
+        type: string
+        description: "Complete image name to deploy, including repository and tags"
+      environment:
+        required: true
+        type: string
+        description: "The environment to deploy to"
+    
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Deploy to staging
+      run: |
+        echo "Deploying ${{ inputs.image }} to ${{ environment }}"
+    
+    - name: Automatic verification of ${{ environment }}
+      run: |
+        echo "Verified"

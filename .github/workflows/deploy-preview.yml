@@ -1,26 +1,25 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: "📦 Deploy preview"
+name: "📨 Deploy preview"
 
 on:
   pull_request:
 
 env:
-  PR_TAG: "pr-${{ github.event.pull_request.number }}"
+  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
 
 jobs:
-  preview:
+  build-preview:
     runs-on: ubuntu-latest
   
     steps:
     - name: Prepare preview
       run: |
-        echo "Prepare whatever is needed to deploy preview: ${{ env.PR_TAG }}"
+        echo "Prepare whatever is needed to deploy preview: ${{ env.IMAGE }}"
 
-    - name: Deploy preview 
-      run: |
-          echo "Deploy preview: ${{ env.PR_TAG }}"
-
-    - name: Verify preview 
-      run: |
-          echo "Automatic verification for preview: ${{ env.PR_TAG }}"
+  call-deploy-preview:
+    needs: build-preview
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ env.IMAGE }}
+      environment: preview
