@@ -15,16 +15,11 @@ on:
         type: string
         default: ghcr.io
         description: "The container registry to use, defaults to github packages"
-      project:
-        required: false
-        type: string
-        default: ${{ github.repository_owner }}
-        description: "The project/namespace to use with the image name"
       name:
         required: false
         type: string
         default: ${{ github.repository }}
-        description: "The name of the image"
+        description: "The name of the image, should include project/namespace"
       tag:
         required: true
         type: string
