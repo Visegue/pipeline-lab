@@ -1,0 +1,42 @@
+name: "📛 Generate Image name"
+
+# This workflow is purely for convienience.
+# Used to generate a container image name complete with registry, project, name and tag
+# It is in respons to env variables not working well for reusable workflows:
+# https://github.com/actions/runner/issues/480#issuecomment-1021278915
+#
+# There are other alternatives as well, like copy/pasting values (hhmm :/ ), or mapping
+# env files to output.
+on:
+  workflow_call:
+    inputs:
+      registry:
+        required: false
+        type: string
+        default: ghcr.io
+        description: "The container registry to use, defaults to github packages"
+      name:
+        required: false
+        type: string
+        default: ${{ github.repository }}
+        description: "The name of the image, should include project/namespace"
+      tag:
+        required: true
+        type: string
+        description: "The tag of the image, if not specified will use the docker metadata action to find tag if not specified"
+        
+    # Map the workflow outputs to job outputs
+    outputs:
+      image:
+        description: "The generated image name"
+        value: ${{ jobs.generate-name.outputs.image }}
+  
+jobs:
+  generate-name:
+    runs-on: ubuntu-latest
+    # Map the job outputs to step outputs
+    outputs:
+      image: ${{ steps.name.outputs.image }}
+    steps:
+      - id: name
+        run: echo "::set-output name=image::${{ inputs.registry }}/${{ inputs.project }}/${{ inputs.name }}:${{ inputs.tag }}"
