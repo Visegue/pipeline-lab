@@ -5,18 +5,24 @@ name: "🚢 Deploy prerelease"
 on:
   release:
     types: [prereleased]
-
-env:
-  REGISTRY: ghcr.io
-  PROJECT: visegue
-  IMAGE_NAME: ${{ github.repository }}
-  TAG: ${{ github.event.release.tag_name }}
-    
+   
 jobs:
-  # Unable to use env directly in input:
+  # Used as a result of not being able to map environments directly as input:
   # https://github.com/actions/runner/issues/480#issuecomment-1021278915
-  
-  call-deploy-staging:
-    uses: ./.github/workflows/_deploy-staging.yml
+  # Would rather use env variables without mapping outputs, it gets messy quick.
+  # There are other alternatives that might be better, eg:
+  # - Read environments directly in shared files
+  # - Map env files to outputs
+  # - Split one image to several inputs for deploy (registry, project, name, tag)
+  call-setup-image:
+    uses: ./.github/workflows/_generate-image-name.yml
     with:
-      image: "$REGISTRY/$PROJECT/$IMAGE_NAME:$TAG"
+      tag: "pr-${{ github.event.pull_request.number }}"
+
+  call-deploy-staging:
+    needs: [call-setup-image]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ needs.call-setup-image.outputs.image }}
+      environment: staging
+

@@ -10,15 +10,29 @@ env:
   IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
     
 jobs:
+
+  # Used as a result of not being able to map environments directly as input:
+  # https://github.com/actions/runner/issues/480#issuecomment-1021278915
+  # Would rather use env variables without mapping outputs, it gets messy quick.
+  # There are other alternatives that might be better, eg:
+  # - Read environments directly in shared files
+  # - Map env files to outputs
+  # - Split one image to several inputs for deploy (registry, project, name, tag)
+  call-setup-image:
+    uses: ./.github/workflows/_generate-image-name.yml
+    with:
+      tag: "pr-${{ github.event.pull_request.number }}"
+
   call-deploy-staging:
+    needs: [call-setup-image]
     uses: ./.github/workflows/_deploy.yml
     with:
-      image: ${{ env.IMAGE }}
+      image: ${{ needs.call-setup-image.outputs.image }}
       environment: staging
 
   call-deploy-production:
+    needs: [call-setup-image, call-deploy-staging]
     uses: ./.github/workflows/_deploy.yml
     with:
-      image: ${{ env.IMAGE }}
+      image: ${{ needs.call-setup-image.outputs.image }}
       environment: production
-      
