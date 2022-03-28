@@ -21,5 +21,5 @@ jobs:
     needs: build-preview
     uses: ./.github/workflows/_deploy.yml
     with:
-      image: ${{ env.IMAGE }}
+      image: "$IMAGE"
       environment: preview
