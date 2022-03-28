@@ -25,4 +25,4 @@ jobs:
     steps:
     - name: Tear down preview 
       run: |
-          echo "Tear down preview for ${{ needs.call-setup-image.outputs.image }}
+          echo "Tear down preview for ${{ needs.call-setup-image.outputs.image }}"
