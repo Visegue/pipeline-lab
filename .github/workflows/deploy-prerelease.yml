@@ -1,23 +1,28 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: "📦 Deploy prerelease to staging"
+name: "🚢 Deploy prerelease"
 
 on:
   release:
-    # Note: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
-    # If not working well with prereleased/release types, used publish and check event instead
-    # Prereleases created from drafts don't trigger prerelease, but publish will. But not
-    # currently using that workflow 
-    types: [prereleased]  
-    
+    types: [prereleased]
+   
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy to staging
-      run: |
-        echo "Deploying ${{ github.event.release.tag_name }} to staging"
-    - name: Automatic verification of staging
-      run: |
-        echo "Verified"
+  # Used as a result of not being able to map environments directly as input:
+  # https://github.com/actions/runner/issues/480#issuecomment-1021278915
+  # Would rather use env variables without mapping outputs, it gets messy quick.
+  # There are other alternatives that might be better, eg:
+  # - Read environments directly in shared files
+  # - Map env files to outputs
+  # - Split one image to several inputs for deploy (registry, project, name, tag)
+  call-setup-image:
+    uses: ./.github/workflows/_generate-image-name.yml
+    with:
+      tag: "pr-${{ github.event.pull_request.number }}"
+
+  call-deploy-staging:
+    needs: [call-setup-image]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ needs.call-setup-image.outputs.image }}
+      environment: staging
+

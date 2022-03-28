@@ -1,11 +1,16 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: "📨 Deploy preview"
+name: "🚀 Deploy to release"
 
 on:
-  pull_request:
+  release:
+    types: [released]
 
+env:
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
+    
 jobs:
+
   # Used as a result of not being able to map environments directly as input:
   # https://github.com/actions/runner/issues/480#issuecomment-1021278915
   # Would rather use env variables without mapping outputs, it gets messy quick.
@@ -18,18 +23,16 @@ jobs:
     with:
       tag: "pr-${{ github.event.pull_request.number }}"
 
-  build-preview:
-    runs-on: ubuntu-latest
+  call-deploy-staging:
     needs: [call-setup-image]
-    steps:
-    - name: Prepare preview
-      run: |
-        echo "Prepare whatever is needed to deploy preview: ${{ needs.call-setup-image.outputs.image }}"
-    
-    
-  call-deploy-preview:
-    needs: [call-setup-image, build-preview]
     uses: ./.github/workflows/_deploy.yml
     with:
       image: ${{ needs.call-setup-image.outputs.image }}
-      environment: preview
+      environment: staging
+
+  call-deploy-production:
+    needs: [call-setup-image, call-deploy-staging]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      image: ${{ needs.call-setup-image.outputs.image }}
+      environment: production
