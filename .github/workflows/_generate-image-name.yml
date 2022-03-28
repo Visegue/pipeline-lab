@@ -34,14 +34,14 @@ on:
     outputs:
       image:
         description: "The generated image name"
-        value: ${{ jobs.generate-name.outputs.image_name }}
+        value: ${{ jobs.generate-name.outputs.image }}
   
 jobs:
   generate-name:
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
     outputs:
-      image_name: ${{ steps.name.outputs.image_name }}
+      image: ${{ steps.name.outputs.image }}
     steps:
       - id: name
-        run: echo "::set-output name=image_name::${{ inputs.registry }}/${{ inputs.project }}/${{ inputs.name }}:${{ inputs.tag }}"
+        run: echo "::set-output name=image::${{ inputs.registry }}/${{ inputs.project }}/${{ inputs.name }}:${{ inputs.tag }}"

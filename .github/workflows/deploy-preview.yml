@@ -19,12 +19,12 @@ jobs:
     steps:
     - name: Prepare preview
       run: |
-        echo "Prepare whatever is needed to deploy preview: ${{ needs.setup-image.outputs.name }}
+        echo "Prepare whatever is needed to deploy preview: ${{ needs.setup-image.outputs.image }}
     
     
   call-deploy-preview:
     needs: [setup-image, build-preview]
     uses: ./.github/workflows/_deploy.yml
     with:
-      image: ${{ needs.setup-image.outputs.name }}
+      image: ${{ needs.setup-image.outputs.image }}
       environment: preview
