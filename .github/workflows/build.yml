@@ -15,14 +15,14 @@ on:
 
 jobs:
   call-lint-and-build:
-    uses: ./.github/workflows/_build.yml
+    uses: ./.github/workflows/_build.yml@main
 
   call-tests:
     needs: call-lint-and-build
-    uses: ./.github/workflows/_test.yml
+    uses: ./.github/workflows/_test.yml@main
   
   call-release:
     needs: call-tests
-    uses: ./.github/workflows/_release.yml
+    uses: ./.github/workflows/_release.yml@main
     secrets:
       release-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
