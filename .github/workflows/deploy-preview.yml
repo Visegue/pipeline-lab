@@ -5,21 +5,26 @@ name: "📨 Deploy preview"
 on:
   pull_request:
 
-env:
-  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
-
 jobs:
+  # Used as a result of not being able to map environments directly as input:
+  # https://github.com/actions/runner/issues/480#issuecomment-1021278915
+  setup-image:
+    uses: ./.github/workflows/_generate-image-name.yml
+    with:
+      tag: "pr-${{ github.event.pull_request.number }}"
+
   build-preview:
     runs-on: ubuntu-latest
-  
+    needs: [setup-image]
     steps:
     - name: Prepare preview
       run: |
-        echo "Prepare whatever is needed to deploy preview: ${{ env.IMAGE }}"
-
+        echo "Prepare whatever is needed to deploy preview: ${{ needs.setup-image.outputs.name }}
+    
+    
   call-deploy-preview:
-    needs: build-preview
+    needs: [setup-image, build-preview]
     uses: ./.github/workflows/_deploy.yml
     with:
-      image: "$IMAGE"
+      image: ${{ needs.setup-image.outputs.name }}
       environment: preview
