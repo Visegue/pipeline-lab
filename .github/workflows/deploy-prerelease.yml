@@ -7,11 +7,16 @@ on:
     types: [prereleased]
 
 env:
-  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
+  REGISTRY: ghcr.io
+  PROJECT: visegue
+  IMAGE_NAME: ${{ github.repository }}
+  TAG: ${{ github.event.release.tag_name }}
     
 jobs:
+  # Unable to use env directly in input:
+  # https://github.com/actions/runner/issues/480#issuecomment-1021278915
+  
   call-deploy-staging:
     uses: ./.github/workflows/_deploy-staging.yml
     with:
-      image: ${{ env.IMAGE }}
-      
+      image: "$REGISTRY/$PROJECT/$IMAGE_NAME:$TAG"
