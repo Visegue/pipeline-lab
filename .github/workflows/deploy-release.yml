@@ -7,7 +7,7 @@ on:
     types: [released]
 
 env:
-  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}/${{ github.event.release.tag_name }}"
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
     
 jobs:
   call-deploy-staging:
@@ -21,3 +21,4 @@ jobs:
     with:
       image: ${{ env.IMAGE }}
       environment: production
+      

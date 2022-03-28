@@ -7,10 +7,11 @@ on:
     types: [prereleased]
 
 env:
-  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}/${{ github.event.release.tag_name }}"
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
     
 jobs:
   call-deploy-staging:
     uses: ./.github/workflows/_deploy-staging.yml
     with:
       image: ${{ env.IMAGE }}
+      

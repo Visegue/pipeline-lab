@@ -7,7 +7,7 @@ on:
     types: [ closed ]
 
 env:
-  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
 
 jobs:
   build:
@@ -16,4 +16,4 @@ jobs:
     steps:
     - name: Tear down preview 
       run: |
-          echo "Tear down preview for ${{ env.IMAGE }}"
+          echo "Tear down preview for ${{ env.IMAGE }}

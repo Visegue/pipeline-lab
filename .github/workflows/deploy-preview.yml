@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  IMAGE: "${{ secrets.registry }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:pr-${{ github.event.pull_request.number }}"
 
 jobs:
   build-preview:
