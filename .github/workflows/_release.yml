@@ -34,7 +34,6 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     
     - run: npm ci
-    - run: npm run build
 
     - name: Create release using semantic release
       run: npx semantic-release       
