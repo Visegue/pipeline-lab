@@ -5,6 +5,9 @@ name: "🚀 Deploy to release"
 on:
   release:
     types: [released]
+
+env:
+  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
     
 jobs:
 
@@ -16,20 +19,20 @@ jobs:
   # - Map env files to outputs
   # - Split one image to several inputs for deploy (registry, project, name, tag)
   call-setup-image:
-    uses: ./.github/workflows/_generate-image-name.yml@main
+    uses: ./.github/workflows/_generate-image-name.yml
     with:
       tag: "pr-${{ github.event.pull_request.number }}"
 
   call-deploy-staging:
     needs: [call-setup-image]
-    uses: ./.github/workflows/_deploy.yml@main
+    uses: ./.github/workflows/_deploy.yml
     with:
       image: ${{ needs.call-setup-image.outputs.image }}
       environment: staging
 
   call-deploy-production:
     needs: [call-setup-image, call-deploy-staging]
-    uses: ./.github/workflows/_deploy.yml@main
+    uses: ./.github/workflows/_deploy.yml
     with:
       image: ${{ needs.call-setup-image.outputs.image }}
       environment: production

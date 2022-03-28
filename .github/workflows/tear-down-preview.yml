@@ -15,7 +15,7 @@ jobs:
   # - Map env files to outputs
   # - Split one image to several inputs for deploy (registry, project, name, tag)
   call-setup-image:
-    uses: ./.github/workflows/_generate-image-name.yml@main
+    uses: ./.github/workflows/_generate-image-name.yml
     with:
       tag: "pr-${{ github.event.pull_request.number }}"
 
