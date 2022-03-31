@@ -39,5 +39,6 @@ jobs:
       run: npx semantic-release       
       env:
         GITHUB_TOKEN: ${{ secrets.release-gh-token }}
-        GH_TOKEN: ${{ secrets.release-gh-token }}
+        DOCKER_USERNAME: ${{ github.actor }}
+        DOCKER_PASSWORD: ${{ secrets.release-gh-token }}
         HUSKY: 0

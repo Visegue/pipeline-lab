@@ -6,6 +6,13 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
+    ["@semantic-release-plus/docker", {
+      "name": {  
+        "registry": "ghcr.io",
+        "namespace": "Visegue",
+        "repository": "pipeline-lab"
+      }
+    }],
     "@semantic-release/github",
     "@semantic-release/git"
   ],
