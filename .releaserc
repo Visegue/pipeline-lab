@@ -9,7 +9,7 @@
     ["@semantic-release-plus/docker", {
       "name": {  
         "registry": "ghcr.io",
-        "namespace": "Visegue",
+        "namespace": "visegue",
         "repository": "pipeline-lab"
       }
     }],
