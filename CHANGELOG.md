@@ -1,3 +1,10 @@
+## [1.0.2-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.1...v1.0.2-rc.1) (2022-04-02)
+
+
+### Bug Fixes
+
+* faux commit to test release ([4cfc212](https://github.com/Visegue/pipeline-lab/commit/4cfc212ae7d5beb2b507919364e134baac496b0f))
+
 ## [1.0.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.0...v1.0.1) (2022-03-28)
 
 
