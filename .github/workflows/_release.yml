@@ -34,11 +34,11 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
     
     - run: npm ci
-    - run: npm run build
 
     - name: Create release using semantic release
       run: npx semantic-release       
       env:
         GITHUB_TOKEN: ${{ secrets.release-gh-token }}
-        GH_TOKEN: ${{ secrets.release-gh-token }}
+        DOCKER_USERNAME: ${{ github.actor }}
+        DOCKER_PASSWORD: ${{ secrets.release-gh-token }}
         HUSKY: 0
