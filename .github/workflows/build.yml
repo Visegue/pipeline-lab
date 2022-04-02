@@ -20,7 +20,7 @@ jobs:
   call-build-container:
     uses: ./.github/workflows/_build-container.yml
 
-  call-tests:
+  call-test:
     uses: ./.github/workflows/_test.yml
   
   call-release:
