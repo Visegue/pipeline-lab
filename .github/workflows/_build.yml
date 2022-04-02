@@ -2,20 +2,8 @@
 
 name:  "🚢 Lint & Build"
 
-on: 
-  workflow_call:
-    inputs:
-      build-container:
-        required: false
-        default: true
-        type: boolean
-        description: "If a container should be built or not"
-
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
+on: workflow_call
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,28 +27,4 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build --if-present
-
-  build-container:
-    runs-on: ubuntu-latest
-    if: inputs.build-container == true
     
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    # Could set manual names and labels, but using metadata extractor as it
-    # simplifies the use of github.repository for image name.
-    # build docker images requires lowercase names, not the case with
-    # our current organization, metadata will fix that.
-    - name: Extract metadata (tags, labels) for Docker
-      id: meta
-      uses: docker/metadata-action@v3
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-    - name: Build Docker image
-      uses: docker/build-push-action@v2
-      with:
-        push: false
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
