@@ -47,7 +47,7 @@ jobs:
       with:
         registry: ${{ inputs.container-registry }}
         username: ${{ github.actor }}
-        password: ${{ secrets.release-gh-token }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create release using semantic release
       run: npx semantic-release       
