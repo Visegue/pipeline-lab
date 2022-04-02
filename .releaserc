@@ -1,20 +1,30 @@
 {
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
+    [
+      "@semantic-release/commit-analyzer",
+      {
         "preset": "conventionalcommits"
-    }],
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
-    ["@semantic-release-plus/docker", {
-      "name": {  
-        "registry": "ghcr.io",
-        "namespace": "visegue",
-        "repository": "pipeline-lab"
+    [
+      "@codedependant/semantic-release-docker",
+      {
+        "dockerRegistry": "ghcr.io",
+        "dockerProject": "visegue",
+        "dockerLogin": "false"
       }
-    }],
+    ],
     "@semantic-release/github",
     "@semantic-release/git"
   ],
-  "branches": ["main", {"name": "rc", "prerelease": true}]
+  "branches": [
+    "main",
+    {
+      "name": "rc",
+      "prerelease": true
+    }
+  ]
 }
