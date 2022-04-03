@@ -1,3 +1,32 @@
+## [1.0.2-rc.4](https://github.com/Visegue/pipeline-lab/compare/v1.0.2-rc.3...v1.0.2-rc.4) (2022-04-03)
+
+
+### Bug Fixes
+
+* faux commit to test release ([81c6862](https://github.com/Visegue/pipeline-lab/commit/81c6862f36370a64b0d553a2eac5c8f0c64e0421))
+
+## [1.0.2-rc.3](https://github.com/Visegue/pipeline-lab/compare/v1.0.2-rc.2...v1.0.2-rc.3) (2022-04-02)
+
+
+### Bug Fixes
+
+* changed docker release plugin ([61cef65](https://github.com/Visegue/pipeline-lab/commit/61cef653153af601e924bc8f564c3a3b08d0fb2f)), closes [#15](https://github.com/Visegue/pipeline-lab/issues/15)
+* explicitly set docker login to false for release config ([34f84ce](https://github.com/Visegue/pipeline-lab/commit/34f84ce0e3fbd9ae719f15bcd14fa0062d3b389e)), closes [#15](https://github.com/Visegue/pipeline-lab/issues/15)
+
+## [1.0.2-rc.2](https://github.com/Visegue/pipeline-lab/compare/v1.0.2-rc.1...v1.0.2-rc.2) (2022-04-02)
+
+
+### Bug Fixes
+
+* faux commit to test release ([f820300](https://github.com/Visegue/pipeline-lab/commit/f8203000c4e520a306f78cc9df1d45fadfda7c87))
+
+## [1.0.2-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.1...v1.0.2-rc.1) (2022-04-02)
+
+
+### Bug Fixes
+
+* faux commit to test release ([4cfc212](https://github.com/Visegue/pipeline-lab/commit/4cfc212ae7d5beb2b507919364e134baac496b0f))
+
 ## [1.0.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.0...v1.0.1) (2022-03-28)
 
 

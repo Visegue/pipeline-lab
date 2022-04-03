@@ -3,7 +3,7 @@
 name:  "🚢 Lint & Build"
 
 on: workflow_call
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,3 +27,4 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build --if-present
+    

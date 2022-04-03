@@ -1,14 +1,11 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: "🚀 Deploy to release"
+name: "🚀 Deploy release"
 
 on:
   release:
     types: [released]
 
-env:
-  IMAGE: "${{ secrets.PUBLIC_REGISTRY_URL }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}"
-    
 jobs:
 
   # Used as a result of not being able to map environments directly as input:

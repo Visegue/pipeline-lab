@@ -4,10 +4,17 @@ name: "📦 Release"
 
 on: 
   workflow_call:
+    inputs:
+      container-registry:
+          type: string
+          required: false
+          default: ghcr.io
+          description: "The container registry to push released images to, should coincide with registry in releaserc config."
     secrets:
         release-gh-token:
           description: 'Github token used when running semantic release'
           required: true
+        
 
 jobs:
   release:
@@ -35,9 +42,15 @@ jobs:
     
     - run: npm ci
 
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ${{ inputs.container-registry }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Create release using semantic release
       run: npx semantic-release       
       env:
         GITHUB_TOKEN: ${{ secrets.release-gh-token }}
-        GH_TOKEN: ${{ secrets.release-gh-token }}
         HUSKY: 0
