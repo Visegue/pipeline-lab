@@ -17,6 +17,10 @@
         "dockerLogin": false
       }
     ],
+    "semantic-release-helm",
+      {
+        "chartPath": "./helm/pipeline.lab"
+      },
     "@semantic-release/github",
     "@semantic-release/git"
   ],
