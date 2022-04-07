@@ -1,3 +1,10 @@
+# [1.1.0-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.2...v1.1.0-rc.1) (2022-04-07)
+
+
+### Features
+
+* anded initial helm chart ([e0b3563](https://github.com/Visegue/pipeline-lab/commit/e0b3563db7be743f895f565abae1fb72e68ab91e)), closes [#16](https://github.com/Visegue/pipeline-lab/issues/16)
+
 ## [1.0.2](https://github.com/Visegue/pipeline-lab/compare/v1.0.1...v1.0.2) (2022-04-03)
 
 
