@@ -17,6 +17,12 @@
         "dockerLogin": false
       }
     ],
+    [
+      "semantic-release-helm",
+      {
+        "chartPath": "./helm/"
+      }
+    ],
     "@semantic-release/github",
     "@semantic-release/git"
   ],

@@ -1,3 +1,20 @@
+# [1.1.0-rc.2](https://github.com/Visegue/pipeline-lab/compare/v1.1.0-rc.1...v1.1.0-rc.2) (2022-04-07)
+
+
+### Bug Fixes
+
+* added helm to the release config ([e757173](https://github.com/Visegue/pipeline-lab/commit/e75717316304fb9a2684eac6bc7f0229f03baf43)), closes [#15](https://github.com/Visegue/pipeline-lab/issues/15)
+* added missing semantic-release-helm ([9ce3d08](https://github.com/Visegue/pipeline-lab/commit/9ce3d08d6b0b16e7df5774549ce0006f064ba9a3)), closes [#15](https://github.com/Visegue/pipeline-lab/issues/15)
+* proper formatting of releaserc file ([e2b18bb](https://github.com/Visegue/pipeline-lab/commit/e2b18bb782d356f88dbefa4c619042bd6edd5607)), closes [#16](https://github.com/Visegue/pipeline-lab/issues/16)
+* proper path to helm chart ([2d04c5d](https://github.com/Visegue/pipeline-lab/commit/2d04c5d5f0a192be742caf1be7edfb2bb1f327ee)), closes [#16](https://github.com/Visegue/pipeline-lab/issues/16)
+
+# [1.1.0-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.0.2...v1.1.0-rc.1) (2022-04-07)
+
+
+### Features
+
+* anded initial helm chart ([e0b3563](https://github.com/Visegue/pipeline-lab/commit/e0b3563db7be743f895f565abae1fb72e68ab91e)), closes [#16](https://github.com/Visegue/pipeline-lab/issues/16)
+
 ## [1.0.2](https://github.com/Visegue/pipeline-lab/compare/v1.0.1...v1.0.2) (2022-04-03)
 
 
