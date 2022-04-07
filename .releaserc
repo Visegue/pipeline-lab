@@ -19,7 +19,7 @@
     ],
     "semantic-release-helm",
       {
-        "chartPath": "./helm/pipeline.lab"
+        "chartPath": "./helm/"
       },
     "@semantic-release/github",
     "@semantic-release/git"
