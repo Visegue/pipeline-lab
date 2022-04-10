@@ -1,3 +1,4 @@
+
 # [1.1.0](https://github.com/Visegue/pipeline-lab/compare/v1.0.2...v1.1.0) (2022-04-07)
 
 
