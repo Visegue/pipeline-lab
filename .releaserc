@@ -24,7 +24,12 @@
       }
     ],
     "@semantic-release/github",
-    "@semantic-release/git"
+    [
+      "@semantic-release/git",
+      {
+        "assets": ['CHANGELOG.md', 'package.json', 'package-lock.json', 'helm/Chart.yaml', 'npm-shrinkwrap.json']
+      }
+    ]
   ],
   "branches": [
     "main",
