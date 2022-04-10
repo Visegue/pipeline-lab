@@ -22,9 +22,7 @@
       {
         "chartPath": "./helm/"
       }
-    ],
-    "@semantic-release/github",
-    "@semantic-release/git"
+    ]
   ],
   "branches": [
     "main",
