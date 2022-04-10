@@ -2,5 +2,5 @@ apiVersion: v2
 name: pipeline-lab
 description: A helm chart for deploying pipeline-lab to kubernetes
 type: application
-version: 0.1.1
-appVersion: 1.1.0-rc.3
+version: 0.1.2
+appVersion: 1.1.1

@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.0...v1.1.1) (2022-04-10)
+
+
+### Bug Fixes
+
+* added helm chart to release push back ([c693d0f](https://github.com/Visegue/pipeline-lab/commit/c693d0fdc3bde47e40831b4a9607205bd24c3a39))
 
 # [1.1.0](https://github.com/Visegue/pipeline-lab/compare/v1.0.2...v1.1.0) (2022-04-07)
 
