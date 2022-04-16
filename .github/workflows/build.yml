@@ -28,3 +28,5 @@ jobs:
     uses: ./.github/workflows/_release.yml
     secrets:
       release-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
+      helm-repository-username: ${{ secrets.PUBLIC_REGISTRY_USERNAME }}
+      helm-repository-password: ${{ secrets.PUBLIC_REGISTRY_PASSWORD }}

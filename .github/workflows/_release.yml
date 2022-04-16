@@ -6,14 +6,20 @@ on:
   workflow_call:
     inputs:
       container-registry:
-          type: string
-          required: false
-          default: ghcr.io
-          description: "The container registry to push released images to, should coincide with registry in releaserc config."
+        type: string
+        required: false
+        default: ghcr.io
+        description: "The container registry to push released images to, should coincide with registry in releaserc config."
     secrets:
-        release-gh-token:
-          description: 'Github token used when running semantic release'
-          required: true
+      release-gh-token:
+        description: 'Github token used when running semantic release'
+        required: true
+      helm-repository-username:
+        description: 'Username if/when pushing helm charts'
+        required: true
+      helm-repository-password:
+        description: 'Username if/when pushing helm charts'
+        required: true
         
 
 jobs:
@@ -54,3 +60,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.release-gh-token }}
         HUSKY: 0
+        REGISTRY_USERNAME: ${{ secrets.helm-repository-username }}
+        REGISTRY_PASSWORD: ${{ secrets.helm-repository-password }}
