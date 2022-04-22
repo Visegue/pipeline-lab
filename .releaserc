@@ -21,7 +21,7 @@
       "semantic-release-helm",
       {
         "chartPath": "./helm/",
-        "registry": "oci://harbor.visegue.se/visegue-public"
+        "registry": "harbor.visegue.se/visegue-public"
       }
     ],
     "@semantic-release/github",
