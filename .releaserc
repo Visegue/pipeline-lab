@@ -13,8 +13,7 @@
       "@codedependant/semantic-release-docker",
       {
         "dockerRegistry": "harbor.visegue.se",
-        "dockerProject": "visegue-public",
-        "dockerLogin": false
+        "dockerProject": "visegue-public"
       }
     ],
     [
