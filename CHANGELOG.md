@@ -1,3 +1,11 @@
+## [1.1.3-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.2...v1.1.3-rc.1) (2022-04-22)
+
+
+### Bug Fixes
+
+* changed chart registry path ([6981281](https://github.com/Visegue/pipeline-lab/commit/6981281e5b5fcf9f743ea5a320b4604db957dd43)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+* trying chart release registry without protocol ([cac18f8](https://github.com/Visegue/pipeline-lab/commit/cac18f85ff8914aced5cdeaf8d812008106aa331)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+
 ## [1.1.2](https://github.com/Visegue/pipeline-lab/compare/v1.1.1...v1.1.2) (2022-04-11)
 
 ### Bug Fixes
