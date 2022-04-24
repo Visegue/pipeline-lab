@@ -17,7 +17,7 @@
       }
     ],
     [
-      "semantic-release-helm",
+      "semantic-release-helm3",
       {
         "chartPath": "./helm/",
         "registry": "harbor.visegue.se/visegue-public"
