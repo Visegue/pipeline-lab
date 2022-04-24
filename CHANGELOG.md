@@ -1,3 +1,10 @@
+## [1.1.3-rc.2](https://github.com/Visegue/pipeline-lab/compare/v1.1.3-rc.1...v1.1.3-rc.2) (2022-04-23)
+
+
+### Bug Fixes
+
+* moved container push logic to the release file ([dc586cb](https://github.com/Visegue/pipeline-lab/commit/dc586cbb6d3484eb31547bffd977bafc77a52dc1)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+
 ## [1.1.3-rc.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.2...v1.1.3-rc.1) (2022-04-22)
 
 

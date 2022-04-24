@@ -6,20 +6,20 @@ on:
   workflow_call:
     secrets:
       release-gh-token:
-        description: 'Github token used when running semantic release'
+        description: 'Github token used when running semantic release, should have push back privileges to the repo'
         required: true
       helm-repository-username:
         description: 'Username if/when pushing helm charts'
-        required: true
+        required: false
       helm-repository-password:
         description: 'Username if/when pushing helm charts'
-        required: true
+        required: false
       container-registry-username:
         description: 'Username if/when pushing build container'
-        required: true
+        required: false
       container-registry-password:
         description: 'Password if/when pushing build container'
-        required: true
+        required: false
         
 
 jobs:
