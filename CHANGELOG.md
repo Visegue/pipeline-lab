@@ -1,3 +1,10 @@
+## [1.1.3-rc.3](https://github.com/Visegue/pipeline-lab/compare/v1.1.3-rc.2...v1.1.3-rc.3) (2022-04-24)
+
+
+### Bug Fixes
+
+* proper configuration key for semantic-release-helm3 ([0409f7f](https://github.com/Visegue/pipeline-lab/commit/0409f7f56554f5e082865be2a725fa4edbde0190)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+
 ## [1.1.3-rc.2](https://github.com/Visegue/pipeline-lab/compare/v1.1.3-rc.1...v1.1.3-rc.2) (2022-04-23)
 
 
