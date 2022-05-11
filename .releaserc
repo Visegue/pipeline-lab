@@ -20,7 +20,8 @@
       "semantic-release-helm3",
       {
         "chartPath": "./helm/",
-        "registry": "harbor.visegue.se/visegue-public"
+        "registry": "https://harbor.visegue.se/chartrepo/visegue-public",
+        "isChartMuseum": true
       }
     ],
     "@semantic-release/github",
