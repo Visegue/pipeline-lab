@@ -1,3 +1,15 @@
+## [1.1.3](https://github.com/Visegue/pipeline-lab/compare/v1.1.2...v1.1.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* changed chart registry path ([6981281](https://github.com/Visegue/pipeline-lab/commit/6981281e5b5fcf9f743ea5a320b4604db957dd43)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+* faux commit to test releas ([a157f02](https://github.com/Visegue/pipeline-lab/commit/a157f02ca0f18e14e5bb5365e235bc67e6ce9bcb))
+* faxu commit to test release ([145118b](https://github.com/Visegue/pipeline-lab/commit/145118b97a9c841a018238747d119c55b5d2f508))
+* moved container push logic to the release file ([dc586cb](https://github.com/Visegue/pipeline-lab/commit/dc586cbb6d3484eb31547bffd977bafc77a52dc1)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+* proper configuration key for semantic-release-helm3 ([0409f7f](https://github.com/Visegue/pipeline-lab/commit/0409f7f56554f5e082865be2a725fa4edbde0190)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+* trying chart release registry without protocol ([cac18f8](https://github.com/Visegue/pipeline-lab/commit/cac18f85ff8914aced5cdeaf8d812008106aa331)), closes [#25](https://github.com/Visegue/pipeline-lab/issues/25)
+
 ## [1.1.3-next.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.2...v1.1.3-next.1) (2022-05-11)
 
 
