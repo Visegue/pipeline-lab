@@ -4,16 +4,22 @@ name: "📦 Release"
 
 on: 
   workflow_call:
-    inputs:
-      container-registry:
-          type: string
-          required: false
-          default: ghcr.io
-          description: "The container registry to push released images to, should coincide with registry in releaserc config."
     secrets:
-        release-gh-token:
-          description: 'Github token used when running semantic release'
-          required: true
+      release-gh-token:
+        description: 'Github token used when running semantic release, should have push back privileges to the repo'
+        required: true
+      helm-repository-username:
+        description: 'Username if/when pushing helm charts'
+        required: false
+      helm-repository-password:
+        description: 'Username if/when pushing helm charts'
+        required: false
+      container-registry-username:
+        description: 'Username if/when pushing build container'
+        required: false
+      container-registry-password:
+        description: 'Password if/when pushing build container'
+        required: false
         
 
 jobs:
@@ -42,15 +48,12 @@ jobs:
     
     - run: npm ci
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ${{ inputs.container-registry }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Create release using semantic release
       run: npx semantic-release       
       env:
         GITHUB_TOKEN: ${{ secrets.release-gh-token }}
         HUSKY: 0
+        REGISTRY_USERNAME: ${{ secrets.helm-repository-username }}
+        REGISTRY_PASSWORD: ${{ secrets.helm-repository-password }}
+        DOCKER_REGISTRY_USER: ${{ secrets.container-registry-username }}
+        DOCKER_REGISTRY_PASSWORD: ${{ secrets.container-registry-password }}
