@@ -1,0 +1,14 @@
+# Values specific for the stagig environment for pipeline-labs.
+
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+  hosts:
+    - host: pipeline-labs.staging.visegue.se
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - pipeline-labs.staging.visegue.se
+      secretName: pipeline-labs-tls
