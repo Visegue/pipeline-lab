@@ -1,3 +1,10 @@
+## [1.1.4-next.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.3...v1.1.4-next.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* proper repository path for the deployment ([e7ba543](https://github.com/Visegue/pipeline-lab/commit/e7ba543b2d0b53c680ee92747ea6cefe57566fd3))
+
 ## [1.1.3](https://github.com/Visegue/pipeline-lab/compare/v1.1.2...v1.1.3) (2022-05-11)
 
 
