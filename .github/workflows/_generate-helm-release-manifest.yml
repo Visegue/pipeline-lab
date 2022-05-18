@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name:  "📄 Generate HelmRelease manifest"
+
+on: workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/fluxcd/flux-cli:v0.30.2
+    steps:
+      - name: Log the flux version
+        run: |
+          flux -v

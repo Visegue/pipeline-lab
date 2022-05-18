@@ -26,3 +26,7 @@ jobs:
       image: ${{ needs.call-setup-image.outputs.image }}
       environment: staging
 
+  call-generate-helm-release-manifest:
+    needs: [call-setup-image]
+    uses: ./.github/workflows/_generate-helm-release-manifest.yml
+

@@ -12,7 +12,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-# Species container ports for the deployment
+# Specifies container ports for the deployment
 ports:
   - name: http
     containerPort: 3000
