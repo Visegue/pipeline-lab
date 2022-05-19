@@ -32,3 +32,6 @@ jobs:
       container-registry-password: ${{ secrets.PUBLIC_REGISTRY_PASSWORD }}
       helm-repository-username: ${{ secrets.PUBLIC_REGISTRY_USERNAME }}
       helm-repository-password: ${{ secrets.PUBLIC_REGISTRY_PASSWORD }}
+
+  call-generate-manifest:
+    uses: ./.github/workflows/_generate-helm-release-manifest.yml
