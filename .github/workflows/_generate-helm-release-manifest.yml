@@ -7,12 +7,10 @@ on: workflow_call
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/fluxcd/flux-cli:v0.30.2
     steps:
-      - name: Create manifest
-        run: |
-          echo "Content of /github/"
-          ls -laR  /github/ 2>/dev/null || echo "/github/ Not found"
-          echo "Content of workspace"
-          ls -laR  $GITHUB_WORKSPACE 2>/dev/null || echo "/github/ Not found"
-          flux create hr pipeline-lab --source=HelmRepository/visegue-public --chart=pipeline-lab --values=/github/workspace/helm/values/values.yaml --values=/github/workspace/helm/values/values-staging.yaml --interval=10m --namespace=demo-staging --export
+    - name: Setup Flux CLI
+      uses: fluxcd/flux2/action@main
+      with:
+          version: 0.30.2
+    - name: Run Flux commands
+      run: flux -v
