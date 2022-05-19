@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/fluxcd/flux-cli:v0.30.2
     steps:
-      - name: Log the flux version
+      - name: Create manifest
         run: |
-          flux -v
+          flux create hr pipeline-lab --source=HelmRepository/visegue-public --chart=pipeline-lab --values=/github/workspace/helm/values/values.yaml --values=/github/workspace/helm/values/values-staging.yaml --interval=10m --namespace=demo-staging --export
