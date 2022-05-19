@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Flux CLI
-      uses: fluxcd/flux2/action@main
+    - uses: actions/checkout@v2
+    - uses: fluxcd/flux2/action@main
       with:
           version: 0.30.2
     - name: Run Flux commands
-      run: flux -v
+      run: flux create hr pipeline-lab --source=HelmRepository/visegue-public --chart=pipeline-lab --values=./helm/values/values.yaml --values=./helm/values/values-staging.yaml --interval=10m --namespace=demo-staging --export
