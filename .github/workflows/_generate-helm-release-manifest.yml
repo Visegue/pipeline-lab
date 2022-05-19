@@ -12,7 +12,7 @@ jobs:
       - name: Create manifest
         run: |
           echo "Content of /github/
-          ls -la  /github/ 2>/dev/null || echo "/github/ Not found"
-          echo "Content of /github/workspace/
-          ls -la  /github/ 2>/dev/null || echo "/github/workspace/ Not found"
+          ls -laR  /github/ 2>/dev/null || echo "/github/ Not found"
+          echo "Content of workspace
+          ls -laR  $GITHUB_WORKSPACE 2>/dev/null || echo "/github/ Not found"
           flux create hr pipeline-lab --source=HelmRepository/visegue-public --chart=pipeline-lab --values=/github/workspace/helm/values/values.yaml --values=/github/workspace/helm/values/values-staging.yaml --interval=10m --namespace=demo-staging --export
