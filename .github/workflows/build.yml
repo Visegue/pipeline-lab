@@ -35,3 +35,5 @@ jobs:
 
   call-generate-manifest:
     uses: ./.github/workflows/_generate-helm-release-manifest.yml
+    with:
+      namespace: "demo-staging"

@@ -2,7 +2,34 @@
 
 name:  "📄 Generate HelmRelease manifest"
 
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      name:
+        required: false
+        type: string
+        default: ${{ github.event.repository.name }}
+        description: "Name of the generated HelmRelease"
+      chart-source:
+        required: false
+        type: string
+        default: "HelmRepository/visegue-public"
+        description: "The named repository (source in flux) that the chart will be read from"
+      chart:
+        required: false
+        type: string
+        default: ${{ github.event.repository.name }}
+        description: "The chart used in the HelmRelease manifest (that will be used for deploy)."
+      namespace:
+        required: false
+        type: string
+        default: "default"
+        description: "The namespace used for applying the HelmRelease manifest"
+      interval:
+        required: false
+        type: string
+        default: "10m"
+        description: "The flux sync interval for the generated HelmRelease"
 
 jobs:
   build:
@@ -13,4 +40,4 @@ jobs:
       with:
           version: 0.30.2
     - name: Run Flux commands
-      run: flux create hr pipeline-lab --source=HelmRepository/visegue-public --chart=pipeline-lab --values=./helm/values/values.yaml --values=./helm/values/values-staging.yaml --interval=10m --namespace=demo-staging --export
+      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} --values=./helm/values/values.yaml --values=./helm/values/values-staging.yaml --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export
