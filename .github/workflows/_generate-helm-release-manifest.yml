@@ -33,8 +33,8 @@ on:
       value-files:
         required: false
         type: string
-        default: "['./helm/values/values.yaml']"
-        description: "Comma separeted list of search paths of value files used for the chart. Search paths relative to the workspace"
+        default: "./helm/values/values.yaml"
+        description: "Comma separeted list of search paths of value files used for the chart, no whitespace. Paths relative to the workspace"
 
 jobs:
   build:
@@ -45,10 +45,11 @@ jobs:
       with:
           version: 0.30.2
     - name: Generate values list
-      # Works by:
-      # Removing whitespaces: ${${{ inputs.value-files }}// /}
-      # Doing evalution with brace epxansion (eval needs becase we're doing brace expansion on a variable)
-      run: eval echo "::set-output name=values::--values={${${{ inputs.value-files }}// /}}"
+      # Works because github does expansion of the variable ${{ input.value-files }} before the actual brace expansion takes places.
+      # Usual evaluation order evaluates brace expansion before variable expansion, this can be solved by using eval command:
+      # https://www.datafix.com.au/BASHing/2020-04-22.html
+      # But that is not needed now that github expands the varible before the command is run.
+      run: echo "::set-output name=values::--values={${{ inputs.value-files }}}"
       id: values_list
     - name: Run Flux commands
       run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export
