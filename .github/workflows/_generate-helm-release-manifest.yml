@@ -30,6 +30,11 @@ on:
         type: string
         default: "10m"
         description: "The flux sync interval for the generated HelmRelease"
+      value-files:
+        required: false
+        type: string
+        default: "['./helm/values/values.yaml']"
+        description: "Comma separeted list of search paths of value files used for the chart. Search paths relative to the workspace"
 
 jobs:
   build:
@@ -39,5 +44,11 @@ jobs:
     - uses: fluxcd/flux2/action@main
       with:
           version: 0.30.2
+    - name: Generate values list
+      # Works by:
+      # Removing whitespaces: ${${{ inputs.value-files }}// /}
+      # Doing evalution with brace epxansion (eval needs becase we're doing brace expansion on a variable)
+      run: eval echo "::set-output name=values::--values={${${{ inputs.value-files }}// /}}"
+      id: values_list
     - name: Run Flux commands
-      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} --values=./helm/values/values.yaml --values=./helm/values/values-staging.yaml --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export
+      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export

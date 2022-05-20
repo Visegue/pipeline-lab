@@ -37,3 +37,4 @@ jobs:
     uses: ./.github/workflows/_generate-helm-release-manifest.yml
     with:
       namespace: "demo-staging"
+      value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
