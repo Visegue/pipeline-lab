@@ -39,9 +39,10 @@ on:
         required: false
         type: string
         default: "helmrelease"
+        description: "Name of the generated helmrelease artifact, can be used in other jobs or downloaded manually"
 
 env:
-  output-file: ${{ inputs.name }} - helmrelease.yaml
+  output-file: ${{ inputs.name }}-helmrelease.yaml
 
 jobs:
   build:
