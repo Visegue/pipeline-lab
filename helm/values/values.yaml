@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: harbor.visegue.se/visegue-pipeline
+  repository: harbor.visegue.se/visegue-public/pipeline-lab
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -35,7 +35,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: "visegue-public"
 
 podAnnotations: {}
 
