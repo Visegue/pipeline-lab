@@ -41,7 +41,7 @@ on:
         default: "helmrelease"
 
 env:
-  output-file: helmrelease.yaml
+  output-file: ${{ inputs.name }} - helmrelease.yaml
 
 jobs:
   build:
