@@ -33,8 +33,8 @@ jobs:
       helm-repository-username: ${{ secrets.PUBLIC_REGISTRY_USERNAME }}
       helm-repository-password: ${{ secrets.PUBLIC_REGISTRY_PASSWORD }}
 
-  call-generate-manifest:
-    uses: ./.github/workflows/_generate-helm-release-manifest.yml
+  call-create-manifest:
+    uses: ./.github/workflows/_create-helm-release-manifest.yml
     with:
       namespace: "demo-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"

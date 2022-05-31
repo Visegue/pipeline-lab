@@ -23,7 +23,7 @@ on:
       namespace:
         required: false
         type: string
-        default: "default"
+        default: "public-apps"
         description: "The namespace used for applying the HelmRelease manifest"
       interval:
         required: false
@@ -35,6 +35,13 @@ on:
         type: string
         default: "./helm/values/values.yaml"
         description: "Comma separeted list of search paths of value files used for the chart, no whitespace. Paths relative to the workspace"
+      artifact-name:
+        required: false
+        type: string
+        default: "helmrelease"
+
+env:
+  output-file: helmrelease.yaml
 
 jobs:
   build:
@@ -52,4 +59,10 @@ jobs:
       run: echo "::set-output name=values::--values={${{ inputs.value-files }}}"
       id: values_list
     - name: Run Flux commands
-      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export
+      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export > ${{ env.output-file }}
+    - name: Upload math result for job 2
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ${{ env.output-file }}
+        retention-days: 5
