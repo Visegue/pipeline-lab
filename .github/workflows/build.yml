@@ -36,5 +36,5 @@ jobs:
   call-create-manifest:
     uses: ./.github/workflows/_create-helm-release-manifest.yml
     with:
-      namespace: "demo-staging"
+      namespace: "public-apps-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"

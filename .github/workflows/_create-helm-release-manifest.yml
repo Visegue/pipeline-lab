@@ -60,7 +60,7 @@ jobs:
       id: values_list
     - name: Run Flux commands
       run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export > ${{ env.output-file }}
-    - name: Upload math result for job 2
+    - name: Upload Generated HelmRelease as artifact
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.artifact-name }}
