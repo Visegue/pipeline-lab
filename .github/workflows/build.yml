@@ -38,3 +38,11 @@ jobs:
     with:
       namespace: "public-apps-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
+      artifact-name: "helmrelease-staging"
+
+  call-deploy:
+    uses: ./.github/workflows/_deploy-helm-release.yml
+    with:
+      artifact-name: "helmrelease-staging"
+      value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
+      deploy-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}

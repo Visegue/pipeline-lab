@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+###
+# Deploys a kubernetes manifests to a remote gitop tracked repo
+###
+
+name: "🚀 Deploy Manifests 📄 to"
+
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: false
+        type: string
+        default: "helmrelease"
+        description: "Name of the artifact containing the manifests being deployed"
+      target-repo:
+        required: false
+        type: string
+        default: "Visegue/public-adr"
+        description: "The target git-ops tracked repo, to push release manifests to"
+      target-path:
+        required: false
+        type: string
+        default: "/staging"
+        description: "The target path in the tracked repo"
+      commit-message:
+        required: false
+        type: string
+        default: "chore: release of ${{ github.repository }} - ${{ github.ref_name }} to ${{ inputs.target-path }}"
+      auto-merge:
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      deploy-gh-token:
+        description: 'Github token used when deploying to remote repo'
+        required: true
+    
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Get manifest from artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: manifests/
+
+    # - name: Deploy to remote repo
+    #   uses: dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083
+    #   env:
+    #     API_TOKEN_GITHUB: ${{ secrets.deploy-gh-token }}
+    #   with:
+    #     source_file: 'manifests/*'
+    #     destination_repo: ${{ inputs.target-repo }}
+    #     destination_folder: ${{ inputs.target-path }}
+    #     user_name: ${{ github.actor }}
+    #     commit_message: ${{ inputs.commit.message }}
+    #     destination_branch_create: 'release/${{ github.repository }}-${{ github.ref_name }}'
+    
+    - name: Automatic verification of ${{ inputs.environment }}
+      run: |
+        echo source_file: 'manifests/*'
+        echo destination_repo: ${{ inputs.target-repo }}
+        echo destination_folder: ${{ inputs.target-path }}
+        echo user_name: ${{ github.actor }}
+        echo commit_message: ${{ inputs.commit.message }}
+        echo destination_branch_create: release/${{ github.repository }}-${{ github.ref_name }}
