@@ -42,6 +42,7 @@ jobs:
 
   call-deploy:
     uses: ./.github/workflows/_deploy-manifests.yml
+    needs: [call-create-manifest]
     with:
       artifact-name: "helmrelease-staging"
     secrets:
