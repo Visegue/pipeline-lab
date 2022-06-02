@@ -45,4 +45,5 @@ jobs:
     with:
       artifact-name: "helmrelease-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
+    secrets:
       deploy-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
