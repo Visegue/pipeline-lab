@@ -27,7 +27,7 @@ on:
       commit-message:
         required: false
         type: string
-        default: "chore: release of ${{ github.repository }} - ${{ github.ref_name }} to ${{ inputs.target-path }}"
+        default: "chore: release of ${{ github.repository }} - ${{ github.ref_name }}"
       auto-merge:
         required: false
         type: boolean
