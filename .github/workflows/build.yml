@@ -41,7 +41,7 @@ jobs:
       artifact-name: "helmrelease-staging"
 
   call-deploy:
-    uses: ./.github/workflows/_deploy-helm-release.yml
+    uses: ./.github/workflows/_deploy-manifests.yml
     with:
       artifact-name: "helmrelease-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
