@@ -53,7 +53,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.deploy-gh-token }}
       with:
-        source_file: 'manifests/*'
+        source_file: 'manifests/'
         destination_repo: ${{ inputs.target-repo }}
         destination_folder: ${{ inputs.target-path }}
         user_name: ${{ github.actor }}
