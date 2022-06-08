@@ -36,6 +36,7 @@ jobs:
   call-create-manifest:
     uses: ./.github/workflows/_create-helm-release-manifest.yml
     with:
+      chart-version: "1.1.4"
       namespace: "public-apps-staging"
       value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
       artifact-name: "helmrelease-staging"
@@ -45,6 +46,5 @@ jobs:
     needs: [call-create-manifest]
     with:
       artifact-name: "helmrelease-staging"
-      chart-version: "1.1.4"
     secrets:
       deploy-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
