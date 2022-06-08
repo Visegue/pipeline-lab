@@ -46,7 +46,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: ${{ inputs.artifact-name }}
-        path: §{{ inputs.target-path }}
+        path: ${{ inputs.target-path }}
 
     - name: Deploy to remote repo
       uses: dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083
