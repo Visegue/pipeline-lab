@@ -19,7 +19,12 @@ on:
         required: false
         type: string
         default: ${{ github.event.repository.name }}
-        description: "The chart used in the HelmRelease manifest (that will be used for deploy)."
+        description: "The chart used in the HelmRelease manifest."
+      chart-version:
+        required: false
+        type: string
+        default: ${{ github.ref_name }}
+        description: "The chart version used in the HelmRelease manifest."
       namespace:
         required: false
         type: string
@@ -60,7 +65,7 @@ jobs:
       run: echo "::set-output name=values::--values={${{ inputs.value-files }}}"
       id: values_list
     - name: Run Flux commands
-      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export > ${{ env.output-file }}
+      run: flux create hr ${{ inputs.name }} --source=${{ inputs.chart-source }} --chart=${{ inputs.chart }} --chart-version=${{ inputs.chart-version }} ${{ steps.values_list.outputs.values }} --interval=${{ inputs.interval }} --namespace=${{ inputs.namespace }} --export > ${{ env.output-file }}
     - name: Upload Generated HelmRelease as artifact
       uses: actions/upload-artifact@v3
       with:
