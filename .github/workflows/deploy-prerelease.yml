@@ -7,26 +7,17 @@ on:
     types: [prereleased]
    
 jobs:
-  # Used as a result of not being able to map environments directly as input:
-  # https://github.com/actions/runner/issues/480#issuecomment-1021278915
-  # Would rather use env variables without mapping outputs, it gets messy quick.
-  # There are other alternatives that might be better, eg:
-  # - Read environments directly in shared files
-  # - Map env files to outputs
-  # - Split one image to several inputs for deploy (registry, project, name, tag)
-  call-setup-image:
-    uses: ./.github/workflows/_generate-image-name.yml
+  call-create-manifest:
+    uses: ./.github/workflows/_create-helm-release-manifest.yml
     with:
-      tag: "pr-${{ github.event.pull_request.number }}"
+      namespace: "public-apps-staging"
+      value-files: "./helm/values/values.yaml,helm/values/values-staging.yaml"
 
-  call-deploy-staging:
-    needs: [call-setup-image]
-    uses: ./.github/workflows/_deploy.yml
+  call-deploy:
+    uses: ./.github/workflows/_deploy-manifests.yml
+    needs: [call-create-manifest]
     with:
-      image: ${{ needs.call-setup-image.outputs.image }}
-      environment: staging
-
-  call-generate-helm-release-manifest:
-    needs: [call-setup-image]
-    uses: ./.github/workflows/_generate-helm-release-manifest.yml
+      target-path: staging/
+    secrets:
+      deploy-gh-token: ${{ secrets.PUBLIC_RELEASE_TOKEN }}
 

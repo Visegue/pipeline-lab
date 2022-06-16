@@ -26,7 +26,6 @@ jobs:
       run: |
         echo "Prepare whatever is needed to deploy preview: ${{ needs.call-setup-image.outputs.image }}"
     
-    
   call-deploy-preview:
     needs: [call-setup-image, build-preview]
     uses: ./.github/workflows/_deploy.yml

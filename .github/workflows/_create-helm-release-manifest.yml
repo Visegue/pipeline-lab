@@ -43,7 +43,7 @@ on:
       artifact-name:
         required: false
         type: string
-        default: "helmrelease"
+        default: "helmrelease-${{ github.ref_name }}"
         description: "Name of the generated helmrelease artifact, can be used in other jobs or downloaded manually"
 
 env:
