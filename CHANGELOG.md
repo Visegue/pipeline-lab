@@ -1,3 +1,10 @@
+# [1.2.0-next.1](https://github.com/Visegue/pipeline-lab/compare/v1.1.4-next.1...v1.2.0-next.1) (2022-06-16)
+
+
+### Features
+
+* deploy helmrelease manifest to remotely tracked github repo ([22ac949](https://github.com/Visegue/pipeline-lab/commit/22ac949cc45c565f750609785944439ba275b422)), closes [#32](https://github.com/Visegue/pipeline-lab/issues/32)
+
 ## [1.1.4](https://github.com/Visegue/pipeline-lab/compare/v1.1.3...v1.1.4) (2022-05-16)
 
 
